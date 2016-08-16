@@ -5,7 +5,7 @@
 	"description": "Functional errors interceptions",
 	"author": "Jean Desravines <hi@jeandesravines.com> (http://www.jeandesravines.com)",
 	"scripts": {
-		"test": "rm -rf ./coverage ; ./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha -- --recursive",
+		"test": "rm -rf ./coverage ; ./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha -- --recursive --reporter nyan",
 		"coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
 	},
 	"main": "lib/helper/catcher.js",
