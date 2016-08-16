@@ -6,7 +6,7 @@
 
 const {describe, it} = require('mocha');
 const {expect, should} = require('chai');
-const catcher = require('../../../lib/helper/catcher');
+const catcher = require('../../lib/helper/catcher');
 
 describe('Catcher', () => {
 	describe('Success', () => {
@@ -14,7 +14,7 @@ describe('Catcher', () => {
 			expect(catcher(() => 'Hello')).to.be.equal('Hello');
 		});
 	});
-	
+
 	describe('Error', () => {
 		it('should return undefined as default value', () => {
 			expect(catcher(() => {
@@ -22,10 +22,10 @@ describe('Catcher', () => {
 			})).to.be.equal(undefined);
 		});
 
-		it('should return an array as default value', () => {
+		it('should return the default value', () => {
 			expect(catcher(() => {
 				throw new Error();
-			}, [])).to.be.equal([]);
+			}, 'hello')).to.be.equal('hello');
 		});
 	});
 });
