@@ -1,4 +1,4 @@
-# catcher
+# Catcher
 
 Functional errors interceptions
 
@@ -32,7 +32,7 @@ const catcher = require('@jdes/catcher');
 
 ## API
 
-### Methodq
+### Methods
 
 #### catcher(fn: function: * [, defaults: * = undefined]): *
 
@@ -55,7 +55,7 @@ const catcher = require('@jdes/catcher');
 const exists = catcher(() => fs.accessSync('./unknown')) ? true : false;
 ```
 
-### Default value
+### With default value
 
 ```javascript
 // Check if Date.now() is modulo 2 with default value
