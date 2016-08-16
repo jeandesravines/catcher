@@ -1,0 +1,35 @@
+{
+	"name": "@jdes/catcher",
+	"private": false,
+	"version": "1.0.0",
+	"description": "Functional errors interceptions",
+	"author": "Jean Desravines <hi@jeandesravines.com> (http://www.jeandesravines.com)",
+	"scripts": {
+		"test": "rm -rf ./coverage ; ./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha -- --recursive",
+		"coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+	},
+	"main": "lib/helper/catcher.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jeandesravines/catcher.git"
+	},
+	"bugs": {
+		"url": "https://github.com/jeandesravines/catcher/issues"
+	},
+	"keywords": [
+		"error",
+		"try",
+		"catch"
+	],
+	"devDependencies": {
+		"chai": "^3.5.0",
+		"coveralls": "^2.11.11",
+		"istanbul": "^0.4.2",
+		"mocha": "^3.0.1"
+	},
+	"homepage": "https://github.com/jeandesravines/catcher",
+	"license": "MIT",
+	"engines": {
+		"node": ">=6.2.2"
+	}
+}
