@@ -1,7 +1,7 @@
 {
 	"name": "@jdes/catcher",
 	"private": false,
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Functional errors interceptions",
 	"author": "Jean Desravines <hi@jeandesravines.com> (http://www.jeandesravines.com)",
 	"scripts": {

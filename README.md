@@ -1,5 +1,8 @@
 # Catcher
 
+[![Build Status](https://travis-ci.org/jeandesravines/catcher.svg)](https://travis-ci.org/jeandesravines/catcher)
+[![Coverage Status](https://coveralls.io/repos/github/jeandesravines/catcher/badge.svg?branch=master)](https://coveralls.io/github/jeandesravines/catcher?branch=master)
+
 Functional errors interceptions
 
 ## Table of contents
