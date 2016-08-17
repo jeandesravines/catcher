@@ -52,23 +52,34 @@ If all is ok, `catcher` returns the value returned by `fn`.
 
 ```javascript
 const fs = require('fs');
+const promisify = require('@jdes/promisify');
 const catcher = require('@jdes/catcher');
 
 // Call fs.accessSync which throws an error with unknown path
-const exists = catcher(() => fs.accessSync('./unknown')) ? true : false;
+const filename = './unknown';
+const exists = catcher(() => fs.accessSync(filename)) ? true : false;
+
+if (exists) {
+    promisify(fs.readFile)(filename)
+        .then((data) => console.log(data))
+        .catch((error) => console.error(error));
+}
 ```
 
 ### With default value
 
 ```javascript
-// Check if Date.now() is modulo 2 with default value
+// Check if Date.now() is modulo 25 with default value and throw an Error else.
+// The Error is catched by the catcher and returns the default value : false
 const modulo = catcher(() => {
-    if (Date.now() % 2) {
+    if (Date.now() % 25) {
         throw new Error();
     }
     
     return true;
 }, false);
+
+console.log(`Date % 25 was ${modulo ? true : false}`);
 ```
 
 
