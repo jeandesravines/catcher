@@ -30,14 +30,14 @@ Import module:
 /**
  * @type {function}
  */
-const catcher = require('@jdes/catcher');
+const Catcher = require('@jdes/catcher');
 ```
 
 ## API
 
 ### Methods
 
-#### catcher(fn: function: * [, defaults: * = undefined]): *
+#### resolve(fn: function: * [, defaults: * = undefined]): *
 
 * `fn`: The function to execute and which can throws an Error.
 * `direction`: The defaults value to return if `fn` fails
@@ -46,18 +46,25 @@ Execute the function `fn` surrounding with try/catch block.
 If all is ok, `catcher` returns the value returned by `fn`.
 
 
+#### reject(error: Error = new Error())
+
+* `error`: The error to throw
+
+Throws the error give in arguments.
+
+
 ## Examples
 
-### With "fs" package
+### Resolves with "fs" package
 
 ```javascript
 const fs = require('fs');
 const promisify = require('@jdes/promisify');
-const catcher = require('@jdes/catcher');
+const Catcher = require('@jdes/catcher');
 
 // Call fs.accessSync which throws an error with unknown path
 const filename = './unknown';
-const exists = catcher(() => fs.accessSync(filename)) ? true : false;
+const exists = Catcher.resolve(() => fs.accessSync(filename)) ? true : false;
 
 if (exists) {
     promisify(fs.readFile)(filename)
@@ -66,20 +73,46 @@ if (exists) {
 }
 ```
 
-### With default value
+### Resolve with default value
 
 ```javascript
-// Check if Date.now() is modulo 25 with default value and throw an Error else.
+const Catcher = require('@jdes/catcher');
+
+// Check if the argument is equal to "jimmy" (after transform it to lower case).
+// If it is not, it throws an Error.
 // The Error is catched by the catcher and returns the default value : false
-const modulo = catcher(() => {
-    if (Date.now() % 25) {
+const isJimmy = (name) => {
+    if (name.toLower() !== 'jimmmy') {
         throw new Error();
     }
     
     return true;
-}, false);
+};
 
-console.log(`Date % 25 was ${modulo ? true : false}`);
+if (Catcher.resolve(() => isJimmy('Toto'), false)) {
+    console.log('Hello Jimmy');
+} else {
+    console.error('Who are you?');
+}
+```
+
+### Reject functionally
+
+```javascript
+const Catcher = require('@jdes/catcher');
+
+// Returns true if name equals "jimmy" or throws an Error
+const isJimmy = (name) => {
+	return name.toLowerCase() === 'jimmy' || Catcher.reject(new Error());
+};
+
+try {
+    if (isJimmy('Toto')) {
+    	console.log('Hello Jimmy');
+    }
+} catch (error) {
+	console.error('Who are you?');
+}
 ```
 
 
