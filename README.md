@@ -128,6 +128,5 @@ You can run the tests with npm:
 npm test
 ```
 
-
 The tests use [Mocha](http://mochajs.org) as the test framework and [Chai](http://http://chaijs.com) as the BDD assertion framework.
 The coverage is measured with [Istanbul](https://github.com/gotwarlost/istanbul).
