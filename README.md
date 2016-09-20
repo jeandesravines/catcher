@@ -18,7 +18,7 @@ Functional errors interceptions
 
 This module can then be installed with npm:
 ```shell
-$ npm install @jdes/catcher
+npm install @jdes/catcher
 ```
 
 
@@ -125,7 +125,7 @@ All pull requests have to pass tests and have a sufficient coverage.
 
 You can run the tests with npm:
 ```shell
-$ npm test
+npm test
 ```
 
 
