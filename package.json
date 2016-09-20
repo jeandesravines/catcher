@@ -1,12 +1,12 @@
 {
 	"name": "@jdes/catcher",
 	"private": false,
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "Functional errors interceptions",
 	"author": "Jean Desravines <hi@jeandesravines.com> (http://www.jeandesravines.com)",
 	"scripts": {
-		"test": "rm -rf ./coverage ; ./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha -- --recursive --reporter nyan",
-		"coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+		"test": "rm -rf coverage ; node_modules/istanbul/lib/cli.js cover node_modules/.bin/_mocha -- --recursive",
+		"coveralls": "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
 	},
 	"main": "lib/helper/catcher.js",
 	"repository": {
