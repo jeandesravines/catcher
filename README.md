@@ -18,7 +18,7 @@ Functional errors interceptions
 
 This module can then be installed with npm:
 ```shell
-$ npm install @jdes/catcher
+npm install @jdes/catcher
 ```
 
 
@@ -125,9 +125,8 @@ All pull requests have to pass tests and have a sufficient coverage.
 
 You can run the tests with npm:
 ```shell
-$ npm test
+npm test
 ```
-
 
 The tests use [Mocha](http://mochajs.org) as the test framework and [Chai](http://http://chaijs.com) as the BDD assertion framework.
 The coverage is measured with [Istanbul](https://github.com/gotwarlost/istanbul).
