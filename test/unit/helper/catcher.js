@@ -5,8 +5,8 @@
 'use strict';
 
 const {describe, it} = require('mocha');
-const {expect, should} = require('chai');
-const Catcher = require('../../lib/helper/catcher');
+const {expect} = require('chai');
+const Catcher = require('../../../lib/helper/catcher');
 
 describe('Catcher', () => {
 	describe('Try', () => {
@@ -30,7 +30,7 @@ describe('Catcher', () => {
 			});
 		});
 	});
-	
+
 	describe('Catch', () => {
 		describe('Success', () => {
 			it('should throws an error', () => {
