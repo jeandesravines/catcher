@@ -9,6 +9,14 @@ const {expect} = require('chai');
 const Catcher = require('../../../lib/helper/catcher');
 
 describe('Catcher', () => {
+	describe('Create', () => {
+		describe('Error', () => {
+			it('should throws an Error', () => {
+				expect(() => new Catcher()).to.throws(Error);
+			});
+		});
+	});
+
 	describe('Try', () => {
 		describe('Success', () => {
 			it('should return a correct value', () => {
