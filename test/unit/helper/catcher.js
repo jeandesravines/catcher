@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Jean Desravines <hi@jeandesravines.com>
+ * Copyright 2017 Jean Desravines <hi@jeandesravines.com>
  */
 
 'use strict';
@@ -9,41 +9,38 @@ const {expect} = require('chai');
 const Catcher = require('../../../lib/helper/catcher');
 
 describe('Catcher', () => {
-	describe('Create', () => {
-		describe('Error', () => {
-			it('should throws an Error', () => {
-				expect(() => new Catcher()).to.throws(Error);
-			});
-		});
-	});
+  describe('Try', () => {
+    describe('Resolve', () => {
+      it('should return a correct value', () => {
+        expect(Catcher.resolve(() => 'Hello')).to.be.equal('Hello');
+      });
+    });
 
-	describe('Try', () => {
-		describe('Success', () => {
-			it('should return a correct value', () => {
-				expect(Catcher.resolve(() => 'Hello')).to.be.equal('Hello');
-			});
-		});
+    describe('Value', () => {
+      it('should return undefined as default value', () => {
+        expect(Catcher.resolve(() => {
+          throw new Error();
+        })).to.be.equal(undefined);
+      });
 
-		describe('Error', () => {
-			it('should return undefined as default value', () => {
-				expect(Catcher.resolve(() => {
-					throw new Error();
-				})).to.be.equal(undefined);
-			});
+      it('should return the default value', () => {
+        expect(Catcher.resolve(() => {
+          throw new Error();
+        }, 'hello')).to.be.equal('hello');
+      });
+    });
+  });
 
-			it('should return the default value', () => {
-				expect(Catcher.resolve(() => {
-					throw new Error();
-				}, 'hello')).to.be.equal('hello');
-			});
-		});
-	});
-
-	describe('Catch', () => {
-		describe('Success', () => {
-			it('should throws an error', () => {
-				expect((() => Catcher.reject(new Error()))).to.throw(Error);
-			});
-		});
-	});
+  describe('Reject', () => {
+    describe('Success', () => {
+      it('should throws an instance of Error', () => {
+        expect((() => Catcher.reject(new Error()))).to.throw(Error);
+      });
+    });
+    describe('Success', () => {
+      it('should throws an instance of TypeError', () => {
+        expect((() => Catcher.reject(new TypeError()))).to.throw(TypeError);
+      });
+    });
+  });
 });
