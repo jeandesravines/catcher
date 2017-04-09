@@ -67,9 +67,9 @@ const filename = './unknown';
 const exists = Catcher.resolve(() => fs.accessSync(filename)) ? true : false;
 
 if (exists) {
-    promisify(fs.readFile)(filename)
-        .then((data) => console.log(data))
-        .catch((error) => console.error(error));
+  promisify(fs.readFile)(filename)
+    .then((data) => console.log(data))
+    .catch((error) => console.error(error));
 }
 ```
 
@@ -82,17 +82,17 @@ const Catcher = require('@jdes/catcher');
 // If it is not, it throws an Error.
 // The Error is catched by the catcher and returns the default value : false
 const isJimmy = (name) => {
-    if (name.toLower() !== 'jimmmy') {
-        throw new Error();
-    }
-    
-    return true;
+  if (name.toLowerCase() !== 'jimmmy') {
+    throw new Error();
+  }
+  
+  return true;
 };
 
 if (Catcher.resolve(() => isJimmy('Toto'), false)) {
-    console.log('Hello Jimmy');
+  console.log('Hello Jimmy');
 } else {
-    console.error('Who are you?');
+  console.error('Who are you?');
 }
 ```
 
@@ -107,9 +107,9 @@ const isJimmy = (name) => {
 };
 
 try {
-    if (isJimmy('Toto')) {
-    	console.log('Hello Jimmy');
-    }
+  if (isJimmy('Toto')) {
+  	console.log('Hello Jimmy');
+  }
 } catch (error) {
 	console.error('Who are you?');
 }
