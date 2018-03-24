@@ -14,9 +14,9 @@ Functional errors interceptions
 
 ## Setup
 
-This module can then be installed with npm:
+This module can then be installed with yarn:
 ```shell
-npm install @jdes/catcher
+yarn add @jdes/catcher
 ```
 
 
@@ -57,12 +57,13 @@ Throws the error give in arguments.
 
 ```javascript
 const fs = require('fs');
-const promisify = require('@jdes/promisify');
+const util = require('util');
 const Catcher = require('@jdes/catcher');
 
 // Call fs.accessSync which throws an error with unknown path
 const filename = './unknown';
 const exists = Catcher.resolve(() => fs.accessSync(filename)) ? true : false;
+const promisify = util.promisify;
 
 if (exists) {
   promisify(fs.readFile)(filename)
